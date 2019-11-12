@@ -42,7 +42,8 @@ class MediaAttachment < ApplicationRecord
 
   IMAGE_STYLES = {
     original: {
-      pixels: 1_638_400, # 1280x1280px
+      # pixels: 1_638_400, # 1280x1280px
+      pixels: 3_686_400,    # 1920x1920px
       file_geometry_parser: FastGeometryParser,
     },
 
@@ -88,7 +89,7 @@ class MediaAttachment < ApplicationRecord
         output: {
           'loglevel' => 'fatal',
           'map_metadata' => '-1',
-          'q:a' => 2,
+          'q:a' => 1,
         },
       },
     },
@@ -119,8 +120,8 @@ class MediaAttachment < ApplicationRecord
     original: VIDEO_FORMAT,
   }.freeze
 
-  IMAGE_LIMIT = 10.megabytes
-  VIDEO_LIMIT = 40.megabytes
+  IMAGE_LIMIT = 16.megabytes
+  VIDEO_LIMIT = 100.megabytes
 
   belongs_to :account,          inverse_of: :media_attachments, optional: true
   belongs_to :status,           inverse_of: :media_attachments, optional: true
